@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="h-[100vh] w=[100vw] flex flex-col items-center justify-center bg-[green]">
+        <div class="flex flex-col items-center justify-center">
+            <div class="text-[white] font-medium text-[20px] pb-5">COUNTER</div>
+            <div class="flex bg-[white] text-[25px] rounded-sm gap-12 p-3 px-5">
+                <button title="decrement" class="border-r-2 border-[gray] pr-5" onclick="decrement()">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <div class="font-bold" id="num">
+                    0
+                </div>
+                <button title="increment" class="border-l-2 border-[gray] pl-5" onclick="increment()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/3ffcbad724.js" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
