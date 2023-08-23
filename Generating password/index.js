@@ -27,10 +27,21 @@ function handleSlider(){
     lengthDisplay.innerText = passwordLength;
      //number change kr raha h
 
-     const min = inputSlider.min;
-     const max= inputSlider.max;
-     inputSlider.style.backgroundSize = ((passwordLength - min)*100/(max - min)) + "% 100%"
+     //kitne percent part ko colour krna h wo nikalne ke liye ye find krte h
+    //  const min = inputSlider.min;
+    //  const max= inputSlider.max;
+    //  inputSlider.style.backgroundSize = ((passwordLength - min)*100/(max - min)) + "% 100%"
 }
+// const sl = document.getElementsByClassName("slider")
+// const min = sl.min;
+// const max = sl.max;
+// const value = sl.value;
+
+// sl.style.background = `linear-gradient(to right, red 0%, red ${(value-min)/(max-min)*100}%, #DEE2E6 ${(value-min)/(max-min)*100}%, #DEE2E6 100%)`;
+
+// sl.oninput = function() {
+//   this.style.background = `linear-gradient(to right, red 0%, red ${(this.value-this.min)/(this.max-this.min)*100}%, #DEE2E6 ${(this.value-this.min)/(this.max-this.min)*100}%, #DEE2E6 100%)`
+// };
 
 function setIndicator(color){
     indicator.style.backgroundColor = color;
@@ -83,6 +94,7 @@ async function copyContent(){
     try{
         await navigator.clipboard.writeText(passwordDisplay.value);
         copyText.innerText = "Copied";
+        copyText.style.display="inline";
     }
     catch(e){
         copyText.innerText = "Failed";
@@ -146,7 +158,6 @@ generateBtn.addEventListener("click", ()=>{
     //new password searching start
     //remove old passwordd
 
-    password="";
     //creating new passwrod
     // if(uppercaseCheck.checked){
     //     password += generateRandomUpperCase();
@@ -180,6 +191,7 @@ generateBtn.addEventListener("click", ()=>{
     let b= passwordLength-funcArr.length;
     console.log(b);
     //all the compulsory character
+    let password=""
     for(let i=0;i<funcArr.length;i++){
         password += funcArr[i]();
     }
@@ -197,7 +209,7 @@ generateBtn.addEventListener("click", ()=>{
     password = shufflePassword(Array.from(password));
     console.log("shuffle");
     //show the password
-    p= password.split("undefined").join("");
+   p= password.split("undefined").join("");
     passwordDisplay.value = p;
     console.log(password.length);
     console.log("created");
