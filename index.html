@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+    <style>
+            .slider::-webkit-slider-thumb{
+                appearance: none; 
+                width: 20px;
+                height: 20px;
+                background-color: red;
+                border-radius:50%;
+                cursor: pointer;
+                box-shadow: 0px 0px 5px 0px red;
+                transition:background-color .3s,box-shadow .3s;
+            }
+            input[type="checkbox"] {
+                appearance: none;
+                background-color: #fff;
+                width: 14px;
+                height: 14px;
+                border: 1.6px solid currentColor;
+                border-radius: 2px;
+                display: inline-grid;
+                place-content: center;
+                }
+            input[type="checkbox"]::before {
+  /* ...existing styles */
+                content: "";
+                width: 0.65em;
+                height: 0.65em;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                box-shadow: inset 1em 1em red;
+                transform-origin: bottom left;
+                clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+                }
+            input[type="checkbox"]:checked::before {
+                transform: scale(1);
+                } 
+    </style>
+</head>
+<body>
+    <div id="container" class="bg-[#b3d4fc] h-[100vh] w-[100vw] flex flex-col justify-center items-center">
+        <h1 class="font-bold text-[30px] m-[30px]">PASSWORD GENERATOR</h1>
+        <div class="display_container">
+            <!-- password writing box -->
+            <label for="pass" class="relative block">
+            <input readonly placeholder="Password" class="display w-[300px] h-[40px] rounded-t-lg placeholder:italic placeholder:text-slate-400 py-2 px-3 text-lg border-b-4 border-[#00682f]"  data-passwordDisplay>
+            <button data-copy >
+                <span data-copyMsg></span>
+                <i class="fa-regular fa-copy absolute top-3.5 right-4 flex items-center pl-2" width="23" height="23"></i>
+                <!-- <img src="" alt="copy" width="23" height="23"> -->
+            </button>
+            </label>
+        </div>
+        <div class="input_container bg-[white] m-[30px] w-[300px] h-[300px] flex flex-col items-center justify-center rounded-lg">
+            <div class="flex items-center space-x-16">
+                <p>Password Length</p>
+                <p data-lengthNumber>0</p>
+            </div>
+            <!-- slider with length -->
+            <input type="range" min="1" max="20" class="slider appearance-none bg-transparent h-[8px] w-[200px]  my-[20px] cursor-pointer border-2 border-slate-300 rounded-full" data-sliderLength>
+            <div>
+            <div>
+                <input type="checkbox" id="uppercase" class="cursor-pointer" >
+                <label for="uppercase">Includes Uppercase letters</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lowercase" class="cursor-pointer">
+                <label for="lowercase">Includes Lowercase letters</label>
+            </div> 
+            <div>
+                <input type="checkbox" id="numbers" class="cursor-pointer">
+                <label for="numbers">Includes numbers</label>
+            </div> 
+            <div>
+                <input type="checkbox" id="special" class="cursor-pointer" >
+                <label for="special">Includes Special Characters</label>
+            </div>  
+            </div>
+            <div class="strenth_container flex relative m-[10px]">
+                <p class="absolute left-[-100px] font-medium">Strength</p>
+                <div data-strengthIndicator class="rounded-full w-[10px] h-[10px] ring-40 absolute    top-2 right-[-95px]"></div>
+            </div>
+        </div>
+        <button id="generate" type="button" class="w-[300px] h-[50px] bg-[red] text-white font-bold rounded-full">GENERATE PASSWORD</button>
+    </div>
+    <script src="https://kit.fontawesome.com/3ffcbad724.js" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
