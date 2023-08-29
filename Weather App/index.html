@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/3ffcbad724.js" crossorigin="anonymous"></script>
+    <script src="http://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .box{
+        height: 90px;
+        width: 150px;
+        background-color: rgb(144, 184, 211, 0.6);
+        border-radius: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+    }
+    button:hover{
+        background-color: rgb(144, 184, 211);
+        border-radius: 5%;
+        padding: 0 5px 0 5px;
+}
+    .loader {
+        display: none;
+        position: absolute;
+        top:30%;
+        margin: auto;
+        border: 15px solid rgb(142, 220, 250);
+        border-radius: 50%;
+        border-top: 15px solid transparent;
+        width: 80px;
+        height: 80px;
+        animation: spinner 2s linear infinite;
+}
+    @keyframes spinner {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+}
+    .backgroundImg {
+        background-color: linear-gradient(to right, rgb(2, 0, 36), rgb(0,212,255) );
+    }
+
+</style>
+<body onload="getlocation()" class="bg-gradient-to-r from-[#020024] to-[#00d4ff] flex items-center flex-col">
+    <div class="loader"></div>
+    
+    <div  class="text-[white] w-[400px]">
+        <h1 id="name" class="font-bold text-center text-[white] text-[28px] mt-[20px] mb-[40px]">WEATHER APP</h1>
+        <div  class="flex justify-between text-[white] mx-[30px]">
+            <button class="buttons" onclick="showCurrentPart()">Your Weather</button>
+            <button class="buttons searchBtn" onclick="showSearchPart()">Search Weather</button>
+        </div>
+        <div data-curPart>
+        <div class="flex flex-col justify-center items-center mt-[40px] mb-[20px]">
+            <p data-location1 class="text-[20px]"></p>
+            <p data-weatherName1></p>
+            <p data-weatherIcon1><img id="image1" src="" alt=""></p>
+            <p data-temp1 class="font-bold text-[28px]"></p>
+        </div>
+        <div class="boxes1 opacity-0 flex justify-evenly">
+            <div class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/1146/1146850.png" width="35px" alt="icon">
+                <p>WINDSPEED</p>
+                <p data-windInfo1></p>
+            </div>
+            <div class="box mx-[10px]">
+                <img src="https://cdn-icons-png.flaticon.com/512/6354/6354567.png" width="35px" alt="icon">
+                <p>HUMIDITY</p>
+                <p data-humidityInfo1></p>
+            </div>
+            <div class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/4834/4834559.png" width="35px" alt="icon">
+                <p>CLOUDS</p>
+                <p data-cloudsInfo1></p>
+            </div>
+        </div>
+        </div>
+    <div class="hidden w-[400px] absolute top-[150px]" data-searchPart>
+        <div class="relative flex justify-between mt-[30px]">
+            <input type="search" placeholder="Search for city..." data-searchBar class="text-[black] w-[90%] rounded-sm focus:outline-none">
+            <div class="bg-[#90B8D3] h-[30px] w-[30px] rounded-full cursor-pointer"></div>
+        <i class="fa fa-search absolute top-[7px] right-[7px] cursor-pointer" data-searchSymbol></i>
+        </div>
+        <div class="flex flex-col justify-center items-center mt-[40px] mb-[20px]">
+            <p data-location2 class="text-[20px]"></p>
+            <p data-weatherName2></p>
+            <p data-weatherIcon2><img id="image2" src="" alt=""></p>
+            <p data-temp2 class="font-bold text-[28px]"></p>
+        </div>
+        <div class="flex justify-evenly opacity-0" data-searchBox>
+            <div class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/1146/1146850.png" width="35px" alt="icon">
+                <p>WINDSPEED</p>
+                <p data-windInfo2></p>
+            </div>
+            <div class="box mx-[10px]">
+                <img src="https://cdn-icons-png.flaticon.com/512/6354/6354567.png" width="35px" alt="icon">
+                <p>HUMIDITY</p>
+                <p data-humidityInfo2></p>
+            </div>
+            <div class="box ">
+                <img src="https://cdn-icons-png.flaticon.com/512/4834/4834559.png" width="35px" alt="icon">
+                <p>CLOUDS</p>
+                <p data-cloudsInfo2></p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
